@@ -1,0 +1,15 @@
+textarea {
+    min-height: 400px;
+}
+
+.button-padding {
+    margin-bottom: 1em;
+}
+
+#archive-me, #unarchive-me {
+    float: left;
+}
+
+#reply-button {
+    float: right;
+}
