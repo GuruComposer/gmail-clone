@@ -150,7 +150,7 @@ function load_email(contents) {
     const body_string = `\n\n\n----------\nOn ${contents.timestamp} ${contents.sender} wrote: ${contents.body}`;
     document.querySelector('#compose-body').value = body_string;
   }
-
+  
   function show_archive_button(contents) {
     const archive_me = document.querySelector('#archive-me');
     const unarchive_me = document.querySelector('#unarchive-me');
@@ -169,30 +169,31 @@ function load_email(contents) {
       unarchive_me.style.display = 'block';
     }
   }
-  
-  // Mark email as read
-  function mark_as_read(contents) {
-    email_pk = contents.id;
-    fetch(`/emails/${email_pk}`, {
-      method: 'PUT',
-      body: JSON.stringify({
-        read: true
-      })
-    })
-  }
-  
-  // Toggle Archive property for email
-  function toggle_archive_email(contents) {
-    email_pk = contents.id;
-    fetch(`/emails/${email_pk}`, {
-      method: 'PUT',
-      body: JSON.stringify({
-        archived: !contents.archived
-      })
-    })
-    .then( () => {
-      load_mailbox('inbox');
-    });
-  }
 }
+
+// Mark email as read
+function mark_as_read(contents) {
+  email_pk = contents.id;
+  fetch(`/emails/${email_pk}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      read: true
+    })
+  })
+}
+
+// Toggle Archive property for email
+function toggle_archive_email(contents) {
+  email_pk = contents.id;
+  fetch(`/emails/${email_pk}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      archived: !contents.archived
+    })
+  })
+  .then( () => {
+    load_mailbox('inbox');
+  });
+}
+
 
