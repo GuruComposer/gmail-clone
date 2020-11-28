@@ -1,24 +1,49 @@
 {% extends "mail/layout.html" %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'mail/login.css' %}">
+{% endblock %}
 
 {% block body %}
 
-    <h2>Login</h2>
 
+
+
+
+<div class="loginContainer">
     {% if message %}
-        <div>{{ message }}</div>
+    <div><i>{{ message }}</i></div>
     {% endif %}
-
-    <form action="{% url 'login' %}" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <input autofocus class="form-control" type="email" name="email" placeholder="Email">
+    
+    <div class="login__form">
+        <h2>Login</h2>
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <input autofocus class="form-control" type="email" name="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" name="password" placeholder="Password">
+            </div>
+            <input class="btn btn-primary" type="submit" value="Login">
+        </form>
+        
+        <div>
+            Don't have an account? <a href="{% url 'register' %}">Register here.</a>
         </div>
-        <div class="form-group">
-            <input class="form-control" type="password" name="password" placeholder="Password">
+        
+        <div class="helper__text">
+            <hr>
+            <p><i>To test this application, please use the below credentials:</i></p>
+            <p>Username: <strong>fred@example.com</strong></p>
+            <p>Password: <strong>password</strong></p>
         </div>
-        <input class="btn btn-primary" type="submit" value="Login">
-    </form>
+        
+    </div>
+    
+</div>
 
-    Don't have an account? <a href="{% url 'register' %}">Register here.</a>
+
 
 {% endblock %}

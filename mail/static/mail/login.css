@@ -1,0 +1,27 @@
+.loginContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	margin: 20px;
+	margin-top: 7%;
+}
+
+.login__form {
+	flex-direction: column;
+	display: flex;
+	width: 500px;
+	padding: 20px;
+	margin: 20px;
+	border-style: groove;
+}
+
+.login__form > form > input {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.helper__text {
+	margin-top: 45px;
+}
